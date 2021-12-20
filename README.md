@@ -157,4 +157,4 @@
 > ![image](https://github.com/worldpapa/Nongsan/blob/main/pic/123123.png)
 > [데이콘 농산물 가격 예측 AI 경진대회](https://github.com/worldpapa/Nongsan/blob/main/pic/description)
 > - 해당 대회에서 5위의 성적으로 입상
-> 
+> - ![관련기사](https://www.donga.com/news/article/all/20211209/110712597/1)
