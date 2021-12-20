@@ -4,40 +4,40 @@
 ## 데이터프레임
  - 2016.1.1부터 2020.1.4까지 농산물 거래량과 가격으로 구성된 데이터프레임
  - EDA와 기본 모델을 만드는데 사용
-![image](https://github.com/jungsungmoon/nongsan/blob/main/pic/%EB%8D%B0%EC%9D%B4%ED%84%B0%ED%94%84%EB%A0%88%EC%9E%84.png)
+![image](https://github.com/worldpapa/Nongsan/blob/main/pic/%EB%8D%B0%EC%9D%B4%ED%84%B0%ED%94%84%EB%A0%88%EC%9E%84.png)
 
 ## EDA
  1. 품목별 농산물 가격 추세
  > - 계절 패턴이 뚜렷하고 품목별로 확인히 다른 분포를 보임
  > - 품목별 모델 생성
  > - 시계열 반영 모델 생성
- > ![image](https://github.com/jungsungmoon/nongsan/blob/main/pic/2.png)
+ > ![image](https://github.com/worldpapa/Nongsan/blob/main/pic/2.png)
  2. 품목별 농산물 가격 분포
  > - 특이값이 많이 포함되어 있음
  > - 외부 요인에 의한 이상치로 예측해야 하는 값
- > ![image](https://github.com/jungsungmoon/nongsan/blob/main/pic/3.png)
+ > ![image](https://github.com/worldpapa/Nongsan/blob/main/pic/3.png)
  3. 특이값 발생 원인
  > - 건고추의 경우 장마 기간이 길어지면 건조가 안돼서 가격 폭등 발생
  > - 특이값 예측 방안을 마련해야 할 필요가 있음
- > ![image](https://github.com/jungsungmoon/nongsan/blob/main/pic/4.png)
+ > ![image](https://github.com/worldpapa/Nongsan/blob/main/pic/4.png)
  
 ## 모델링
  1. 첫번째 모델
  > - 대략적인 예측 성능을 알아보기 위한 모델
  > - 일주일 후 배추가격을 예측
- > ![image](https://github.com/jungsungmoon/nongsan/blob/main/pic/5.png)
+ > ![image](https://github.com/worldpapa/Nongsan/blob/main/pic/5.png)
  > - 전반적인 추세는 잘 예측하지만 거래가 발생하지 않는 휴일 전후로 예측성능이 떨어지는 모습을 보임
  > - 큰 폭으로 변동되는 가격은 잘 예측하지 못함
  2. 두번째 모델
  > -feature selection 수행 모델
  > 
- > ![image](https://github.com/jungsungmoon/nongsan/blob/main/pic/6.png) ![image](https://github.com/jungsungmoon/nongsan/blob/main/pic/7.png)
+ > ![image](https://github.com/worldpapa/Nongsan/blob/main/pic/6.png) ![image](https://github.com/worldpapa/Nongsan/blob/main/pic/7.png)
  > - 배추가격 그래프와 배추거래량 그래프
  > - 정상성을 띄는 시계열 데이터인 거래량과 달리 가격은 비정상 시계열 데이터
  > 
- > ![image](https://github.com/jungsungmoon/nongsan/blob/main/pic/8.png)
+ > ![image](https://github.com/worldpapa/Nongsan/blob/main/pic/8.png)
  > - 상관분석 결과 거래량은 가격과 상관관계가 없음 -> feature에서 제외
- > ![image](https://github.com/jungsungmoon/nongsan/blob/main/pic/9.png)
+ > ![image](https://github.com/worldpapa/Nongsan/blob/main/pic/9.png)
  > - 거래량을 feature에서 제외한 결과 휴일 전후와 특이값을 비교적 잘 예측함
  > - 하지만 거래가 발생하지 않는 휴일을 잘 예측하지 못함 -> 휴일 처리 방안 필요
 
@@ -49,27 +49,27 @@
  > df = df.interpolate().fillna(0)
  > df[:10]
  > ```
- > ![image](https://github.com/jungsungmoon/nongsan/blob/main/pic/KakaoTalk_20211207_134249946.png)
+ > ![image](https://github.com/worldpapa/Nongsan/blob/main/pic/KakaoTalk_20211207_134249946.png)
  > - 예측 결과 전반적으로 준수한 성능을 보임
- > ![image](https://github.com/jungsungmoon/nongsan/blob/main/pic/10.png) 
+ > ![image](https://github.com/worldpapa/Nongsan/blob/main/pic/10.png) 
  2. 시계열 분해
  > - 분해 시계열의 잔차를 추가 feature로 활용
  > 
- > ![image](https://github.com/jungsungmoon/nongsan/blob/main/pic/11.png)
+ > ![image](https://github.com/worldpapa/Nongsan/blob/main/pic/11.png)
  > ```
  > stl = STL(df[['date', '배추_가격(원/kg)']].set_index('date'), period=12)
  > res = stl.fit()
  > ```
- > ![image](https://github.com/jungsungmoon/nongsan/blob/main/pic/12.png)
+ > ![image](https://github.com/worldpapa/Nongsan/blob/main/pic/12.png)
  > - 예측 결과 거의 완벽하게 fitting 된 모습을 보임
 
 ## 모델 선정
 최종 모델을 선정하기 위해 4주후의 농산물 가격을 예측 하는 모델을 만들고 성능을 비교
  1. 랜덤포레스트 모델
- > ![image](https://github.com/jungsungmoon/nongsan/blob/main/pic/13.png)
+ > ![image](https://github.com/worldpapa/Nongsan/blob/main/pic/13.png)
  > - 4주 후를 예측하는 랜덤포레스트 모델은 상대적으로 성능이 떨어짐
  2. LSTM 모델
- > ![image](https://github.com/jungsungmoon/nongsan/blob/main/pic/14.png)
+ > ![image](https://github.com/worldpapa/Nongsan/blob/main/pic/14.png)
  > - LSTM 모델의 경우 상대적으로 긴 기간도 잘 예측하는 모습을 보임
  > - 해당 LSTM 모델을 최종 모델로 선정
 
@@ -154,7 +154,7 @@
 > df1.to_csv('/content/gdrive/MyDrive/nongsan_data/df1.csv', encoding='utf-8-sig', index=False)
 > ```
 3. 성과
-> ![image](https://github.com/jungsungmoon/nongsan/blob/main/pic/123123.png)
-> [데이콘 농산물 가격 예측 AI 경진대회](https://dacon.io/competitions/official/235801/overview/description)
+> ![image](https://github.com/worldpapa/Nongsan/blob/main/pic/123123.png)
+> [데이콘 농산물 가격 예측 AI 경진대회](https://github.com/worldpapa/Nongsan/blob/main/pic/description)
 > - 해당 대회에서 5위의 성적으로 입상
 > 
