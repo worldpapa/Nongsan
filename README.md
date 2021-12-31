@@ -1,6 +1,8 @@
 # 농산물 가격 예측 프로젝트
  분해 시계열의 잔차를 feature로 활용한 LSTM 모델로 농산물 가격을 예측
 
+
+** 자세한 [코드](https://github.com/worldpapa/Nongsan/blob/main/gaon_nongsan.ipynb)는 클릭 참고 바랍니다.
 ## 데이터프레임
  - 2016.1.1부터 2020.1.4까지 농산물 거래량과 가격으로 구성된 데이터프레임
  - EDA와 기본 모델을 만드는데 사용
