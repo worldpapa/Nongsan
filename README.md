@@ -1,4 +1,4 @@
-# 농산물 가격 예측 프로젝트
+# 농넷 농산물 가격 예측 프로젝트
  분해 시계열의 잔차를 feature로 활용한 LSTM 모델로 농산물 가격을 예측
 
 
@@ -157,6 +157,6 @@
 > ```
 3. 성과
 > ![image](https://github.com/worldpapa/Nongsan/blob/main/pic/123123.png)
-> [데이콘 농산물 가격 예측 AI 경진대회](https://dacon.io/competitions/official/235801/overview/description)
+> [농넷 농산물 가격 예측 AI 경진대회](https://dacon.io/competitions/official/235801/overview/description)
 > * 해당 대회에서 5위의 성적으로 우수상 수상
 > * [관련기사](https://www.donga.com/news/article/all/20211209/110712597/1)
